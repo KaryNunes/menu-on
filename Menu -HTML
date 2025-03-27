@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Exemplo</title>
+
+  <style>
+    #cabecalho {
+      background-color: black; /* Mudança da cor de fundo para preto */
+      color: white; /* Mudança da cor do texto para branco */
+    }
+    .titulo {
+      font-family: Arial, sans-serif;
+    }
+    .lista-comidas {
+      font-family: Arial, sans-serif;
+    }
+    .idioma-buttons { /* Estilo para os botões de idioma */
+      display: none; /* Inicialmente oculto */
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="cabecalho">La Familia</h1>
+  <hr>
+  
+  <h2><i><strong id="menuTitle">Seu Cardápio Aqui</strong></i></h2>
+  <hr>
+  
+  <!-- Botão de seleção de idioma -->
+  <button onclick="toggleLanguage()">Selecionar Idioma</button>
+  <div class="idioma-buttons">
+    <button onclick="changeLanguage('pt')">Português</button>
+    <button onclick="changeLanguage('en')">Inglês</button>
+    <button onclick="changeLanguage('es')">Espanhol</button>
+  </div>
+
+  <h2 class="titulo">Lista de comidas mexicanas:</h2>
+  <h3 class="titulo">Entradas e acompanhamentos:</h3>
+  <ul class="lista-comidas">
+    <li>Guacamole</li>
+    <li>Totopos</li>
+    <li>Nachos</li>
+    <li>Quesadillas</li>
+    <li>Sopes</li>
+    <li>Tostadas</li>
+  </ul>
+
+  <h3 class="titulo">Pratos principais:</h3>
+  <ul class="lista-comidas">
+    <li>Tacos</li>
+    <li>Burritos</li>
+    <li>Enchiladas</li>
+    <li>Tamales</li>
+    <li>Pozole</li>
+    <li>Mole poblano</li>
+    <li>Chilli com carne</li>
+    <li>Cochinita pibil</li>
+  </ul>
+
+  <h3 class="titulo">Sobremesas:</h3>
+  <ul class="lista-comidas">
+    <li>Churros</li>
+    <li>Flan</li>
+    <li>Arroz con leche</li>
+    <li>Jericalla</li>
+  </ul>
+
+  <h3 class="titulo">Bebidas:</h3>
+  <ul class="lista-comidas">
+    <li>Tequila</li>
+    <li>Mezcal</li>
+    <li>Michelada</li>
+    <li>Horchata</li>
+  </ul>
+
+  <h3 class="titulo">Outras:</h3>
+  <ul class="lista-comidas">
+    <li>Tortillas</li>
+    <li>Feijão</li>
+    <li>Arroz</li>
+    <li>Chiles</li>
+  </ul>
+
+  <script>
+    function toggleLanguage() {
+      var idiomaButtons = document.querySelector('.idioma-buttons');
+      idiomaButtons.style.display = (idiomaButtons.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function changeLanguage(language) {
+      var elements = document.querySelectorAll('body *:not(#cabecalho)');
+      elements.forEach(function(element) {
+        switch (language) {
+          case 'pt':
+            element.innerHTML = element.innerHTML.replace('mexicanas', 'mexicanas').replace('Entradas e acompanhamentos:', 'Entradas e acompanhamentos:').replace('Pratos principais:', 'Pratos principais:').replace('Sobremesas:', 'Sobremesas:').replace('Bebidas:', 'Bebidas:').replace('Outras:', 'Outras:');
+            break;
+          case 'en':
+            element.innerHTML = element.innerHTML.replace('mexicanas', 'mexicanas').replace('Entradas e acompanhamentos:', 'Starters and sides:').replace('Pratos principais:', 'Main dishes:').replace('Sobremesas:', 'Desserts:').replace('Bebidas:', 'Drinks:').replace('Outras:', 'Others:');
+            break;
+          case 'es':
+            element.innerHTML = element.innerHTML.replace('mexicanas', 'mexicanas').replace('Entradas e acompanhamentos:', 'Entradas y acompañamientos:').replace('Pratos principais:', 'Platos principales:').replace('Sobremesas:', 'Postres:').replace('Bebidas:', 'Bebidas:').replace('Outras:', 'Otros:');
+            break;
+        }
